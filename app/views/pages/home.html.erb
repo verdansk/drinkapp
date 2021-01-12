@@ -10,6 +10,8 @@
 <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-secondary" %>
 <% else %>
 <%= link_to "Add an occassions", new_user_occassion_path(@user), class: "btn btn-success" %>
+<br>
+<%= link_to "Check all occassions", user_occassions_path(@user), class: "btn btn-secondary" %>
 <% end %>
   </div>
 </div>
