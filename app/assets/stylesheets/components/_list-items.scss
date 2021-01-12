@@ -1,0 +1,39 @@
+.bar {
+  list-style-type: none;
+  margin: 10px 0px;
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 2px rgba(0,0,0,.1);
+  text-align: center;
+  color: black;
+  transition: box-shadow .8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  overflow-wrap: anywhere;
+  margin-right: 10px;
+}
+
+.bar:hover {
+  box-shadow: 5px -5px 0px 0px rgba(0,0,0,1);
+}
+
+.bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bar-grid {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+a.bar-link {
+  color: black;
+}
+
+a.bar-link:hover {
+  color: black;
+  text-decoration: none;
+}

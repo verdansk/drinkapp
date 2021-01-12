@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="occ-grid">
+  <div class="occ">
+    <h1 class="occ-title">
+      DrinkApp
+    </h1>
+<div class="drinks">
+  <% if !user_signed_in? %>
+<%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+<br>
+<%= link_to "Sign-up", new_user_registration_path, class: "btn btn-secondary" %>
+<% else %>
+<%= link_to "Add an occassions", new_user_occassion_path(@user), class: "btn btn-success" %>
+<% end %>
+  </div>
+</div>

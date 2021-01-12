@@ -1,0 +1,24 @@
+<div class="occ-grid">
+  <div class="occ">
+    <h1 class="occ-title">
+      List of all the occassions
+    </h1>
+<ul>
+  <% @occassions.sort.each do |item| %>
+    <div class="bar-container">
+    <%= link_to(user_occassion_path(@user, item), class: "bar-link") do %>
+      <li class="bar">
+        <h3><%= item.occassion %></h3>
+        <div class="bar-grid">
+          <p>🍸 <%= item.drink_num %></p>
+          <p>🗓 <%= item.created_at.strftime("%d-%m-%y") %></p>
+        </div>
+      </li>
+    <%= link_to "Delete", user_occassion_path(@user, item), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>
+    <% end %>
+    </div>
+  <% end %>
+</ul>
+<h2>Add an occassion</h2>
+<%= button_to "Add an occassion", new_user_occassion_path, method: :get, class: "btn btn-success" %>
+</div>

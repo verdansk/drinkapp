@@ -1,0 +1,66 @@
+.occ-grid {
+  height: 90vh;
+  display: grid;
+  align-content: space-between;
+}
+
+.occ {
+  margin: 20px 10px 0px 10px;
+  padding: 10px;
+  display: grid;
+  justify-content: center;
+}
+
+.occ-title, .occ-input {
+  text-align: center;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+.drinks {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.drink_num {
+  font-size: 7.1rem;
+  border: 1px solid black;
+  border-radius: 91%;
+  padding: 8px;
+  width: 202px;
+  height: 202px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.increment {
+  padding: 5px;
+  font-size: 1.5rem;
+  color: black;
+  border: 1px solid black;
+  padding: 10px 30px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.time-title {
+  text-align: center;
+}
+
+.time-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.time-icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+td.days, .hours, .minutes {
+  padding-left: 5px;
+}

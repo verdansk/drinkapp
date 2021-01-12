@@ -1,0 +1,88 @@
+
+<div class="occ-grid">
+  <div class="occ">
+    <h1 class="occ-title">
+      🎉 Occassion 🎉
+    </h1>
+    <h3 class="occ-input">
+      <%= @occassion.occassion %>
+    </h3>
+  </div>
+  <div class="drinks">
+    <p class="occ-input">Number of drinks:</p>
+    <div class="drink_num"><%= @occassion.drink_num %></div>
+  </div>
+  <div class="drinks">
+  <p class="occ-input">Add a drink</p>
+  <%= link_to(increment_path(@occassion), method: :put, class: "increment") do %>
+  <i class="fas fa-plus"></i>
+  <% end %>
+  </div>
+  <div class="drinks">
+  <h3 class="time-title">
+    Remaining time
+  </h3>
+  <div class="time-box">
+    <i class="fas fa-clock time-icon"></i>
+    <% if @occassion.drink_num > 0 %>
+    <table id="clockdiv">
+      <tr>
+        <td class="days"></td>
+        <td class="hours"></td>
+        <td class="minutes"></td>
+        <td class="seconds"></td>
+      </tr>
+    </table>
+    <% else  %>
+    <p>No drinks yet</p>
+    <% end %>
+  </div>
+  </div>
+<%= link_to "Return to home", user_occassions_path, class: "btn btn-info" %>
+</div>
+
+  <script type="text/javascript">
+    function getTimeRemaining(endtime) {
+      const passed_time = Date.parse(new Date()) - Date.parse(endtime);
+      const total = Math.floor((<%= @occassion.drink_num %> * 5400000) - passed_time);
+      const seconds = Math.floor((total / 1000) % 60);
+      const minutes = Math.floor((total / 1000 / 60) % 60);
+      const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+      return {
+        total,
+        days,
+        hours,
+        minutes,
+        seconds
+      };
+    }
+
+    function initializeClock(id, endtime) {
+      const clock = document.getElementById(id);
+      const daysSpan = clock.querySelector('.days');
+      const hoursSpan = clock.querySelector('.hours');
+      const minutesSpan = clock.querySelector('.minutes');
+      const secondsSpan = clock.querySelector('.seconds');
+
+      function updateClock() {
+        const t = getTimeRemaining(endtime);
+
+        daysSpan.innerHTML = t.days + 'D';
+        hoursSpan.innerHTML = ('0' + t.hours).slice(-2) + 'H';
+        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2) + 'M';
+        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2) + 'S';
+
+        if (t.total <= 0) {
+          clearInterval(timeinterval);
+        }
+      }
+
+      updateClock();
+      const timeinterval = setInterval(updateClock, 1000);
+    }
+
+    var deadline = '<%= @occassion.created_at %>';
+    initializeClock('clockdiv', deadline);
+  </script>
